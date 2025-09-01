@@ -25,10 +25,13 @@ function ImcForm() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/imc/calcular", {
-        altura: alturaNum,
-        peso: pesoNum,
-      });
+      const response = await axios.post(
+        "https://2025-proyecto1-back-2ijp2qvgj-valentino-lattanzis-projects.vercel.app/imc/calcular",
+        {
+          altura: alturaNum,
+          peso: pesoNum,
+        }
+      );
       setResultado(response.data);
       setError("");
     } catch (err) {
@@ -79,7 +82,6 @@ function ImcForm() {
           </div>
         )}
       </div>
-      
     </div>
   );
 }
