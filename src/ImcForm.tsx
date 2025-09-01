@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "./App.css";
 
 interface ImcResult {
   imc: number;
@@ -47,8 +48,8 @@ function ImcForm() {
       <div>
         <h1>Calculadora de IMC</h1>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Altura (m):</label>
+          <div className="inputField">
+            <label>Altura (m)</label>
             <input
               type="number"
               value={altura}
@@ -57,8 +58,8 @@ function ImcForm() {
               min="0.1"
             />
           </div>
-          <div>
-            <label>Peso (kg):</label>
+          <div className="inputField">
+            <label>Peso (kg)</label>
             <input
               type="number"
               value={peso}
@@ -66,11 +67,13 @@ function ImcForm() {
               min="1"
             />
           </div>
-          <button type="submit">Calcular</button>
+          <button className="button" type="submit">
+            Calcular
+          </button>
         </form>
 
         {resultado && (
-          <div>
+          <div className="result">
             <p>IMC: {resultado.imc.toFixed(2)}</p>
             <p>Categoría: {resultado.categoria}</p>
           </div>
