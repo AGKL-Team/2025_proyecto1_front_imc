@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color-scheme: light dark;
 }
 
 .inputField {
@@ -30,4 +31,23 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f9f9f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  #root {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  .inputField input {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    color: #e0e0e0;
+  }
+  .button {
+    background-color: #1a73e8;
+  }
+  .result {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+  }
 }
