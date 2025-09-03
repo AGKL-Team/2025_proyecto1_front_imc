@@ -1,15 +1,13 @@
-
-import ImcForm from './ImcForm'
+import { ImcPage } from "./pages/ImcPage";
 
 function App() {
-
   return (
     <>
-     <div>
-      <ImcForm />
-    </div>
+      <div>
+        <ImcPage />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
