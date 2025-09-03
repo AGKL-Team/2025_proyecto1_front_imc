@@ -25,7 +25,7 @@ export default function ImcForm() {
           <label>Altura (m)</label>
           <input
             type="number"
-            value={heightInput}
+            value={parseFloat(heightInput)}
             onChange={(e) => handleInputHeight(e.target.value)}
             step="0.01"
             min="0.1"
@@ -35,9 +35,10 @@ export default function ImcForm() {
           <label>Peso (kg)</label>
           <input
             type="number"
-            value={weightInput}
+            value={parseFloat(weightInput)}
             onChange={(e) => handleInputWeight(e.target.value)}
             min="1"
+            step={"0.1"}
           />
         </div>
         <button className="button" type="submit">

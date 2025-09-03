@@ -14,13 +14,32 @@ export const useCalculateImc = () => {
   const [response, setResponse] = useState<ImcResponse | null>(null);
 
   const handleInputHeight = (value: string) => {
-    setHeight(parseFloat(value) || 0);
-    setHeightInput(parseFloat(value) ? value : "");
+    const floatHeight = parseFloat(value);
+
+    if (isNaN(floatHeight) || floatHeight < 0) {
+      setError("Ingrese una altura válida entre 0 y 3 metros.");
+      setResponse(null);
+      setHeight(0);
+      setHeightInput("");
+      return;
+    }
+    setHeight(floatHeight);
+    setHeightInput(floatHeight ? value : "");
+    setError("");
   };
 
   const handleInputWeight = (value: string) => {
-    setWeight(parseFloat(value) || 0);
-    setWeightInput(parseFloat(value) ? value : "");
+    const floatWeight = parseFloat(value);
+    if (isNaN(floatWeight) || floatWeight < 0) {
+      setError("Ingrese un peso válido entre 0 y 500 kg.");
+      setResponse(null);
+      setWeight(0);
+      setWeightInput("");
+      return;
+    }
+    setWeight(floatWeight || 0);
+    setWeightInput(floatWeight ? value : "");
+    setError("");
   };
 
   const calculate = async () => {
