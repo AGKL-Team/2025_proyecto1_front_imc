@@ -3,17 +3,24 @@ import { ImcResponse } from "../interfaces/imc-response.interface";
 import { calculateImc } from "../services/imc.service";
 
 export const useCalculateImc = () => {
+  // User Interface Variables
+  const [heightInput, setHeightInput] = useState("");
+  const [weightInput, setWeightInput] = useState("");
+  const [error, setError] = useState("");
+
+  // Bussiness Logic Variables
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
   const [response, setResponse] = useState<ImcResponse | null>(null);
-  const [error, setError] = useState("");
 
   const handleInputHeight = (value: string) => {
     setHeight(parseFloat(value) || 0);
+    setHeightInput(parseFloat(value) ? value : "");
   };
 
   const handleInputWeight = (value: string) => {
     setWeight(parseFloat(value) || 0);
+    setWeightInput(parseFloat(value) ? value : "");
   };
 
   const calculate = async () => {
@@ -50,8 +57,8 @@ export const useCalculateImc = () => {
   };
 
   return {
-    height,
-    weight,
+    heightInput,
+    weightInput,
     response,
     error,
     calculate,

@@ -3,8 +3,8 @@ import { useCalculateImc } from "../hooks/useCalculateImc";
 
 export default function ImcForm() {
   const {
-    height,
-    weight,
+    heightInput,
+    weightInput,
     error,
     response,
     calculate,
@@ -25,7 +25,7 @@ export default function ImcForm() {
           <label>Altura (m)</label>
           <input
             type="number"
-            value={height}
+            value={heightInput}
             onChange={(e) => handleInputHeight(e.target.value)}
             step="0.01"
             min="0.1"
@@ -35,7 +35,7 @@ export default function ImcForm() {
           <label>Peso (kg)</label>
           <input
             type="number"
-            value={weight}
+            value={weightInput}
             onChange={(e) => handleInputWeight(e.target.value)}
             min="1"
           />
