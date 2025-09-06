@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+# Calculadora de IMC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Descripción
 
-Currently, two official plugins are available:
+Aplicación que permite calcular el Índice de Masa Corporal (IMC) a partir del peso y la altura del usuario.  
+El sistema indica en qué rango se encuentra la persona (bajo peso, normal, sobrepeso, obesidad).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Alcance
 
-## Expanding the ESLint configuration
+- Ingreso de datos básicos (peso y altura).
+- Cálculo automático del IMC con la fórmula:
+  - $\text{IMC} = \frac{\text{peso}} {\text{altura}^2}$.
+- Clasificación de resultados según la OMS.
+- Interfaz simple y clara para uso en entorno universitario.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📌 Requisitos previos
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js v18+
+- npm
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+> [!NOTE]
+> Para descargar estos programas acceda al [link de descarga](https://nodejs.org/en/download/)
+
+## ⚒️ Instalación
+
+```bash
+git clone https://github.com/AGKL-Team/2025_proyecto1_front_imc
+cd ./2025_proyecto1_front_imc
+npm install
+
+# NOTA: para visualizar la web ingrese 'o' en la terminal
+# Eso abre automáticamente la web en su navegador predeterminado
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🧪 Ejemplo de uso
+
+**Ingresar**:
+
+```bash
+Peso: 70 kg
+Altura: 1.75 m
+```
+
+**Resultado**:
+
+```bash
+IMC = 22.86 → Peso normal
+```
+
+## 👨‍💻 Autores
+
+- AGKL Team
+
+  - Amante Aldana
+  - Gutierrez Alexis
+  - Koncurat Thomas
+  - Lattazi Valentino
+
+- Universidad Tecnológica Nacional - Villa María
+
+- Materia: Ingeniería de Software
