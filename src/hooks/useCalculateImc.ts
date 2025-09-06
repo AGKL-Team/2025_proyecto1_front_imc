@@ -23,6 +23,7 @@ export const useCalculateImc = () => {
       setHeightInput("");
       return;
     }
+
     setHeight(floatHeight);
     setHeightInput(floatHeight ? value : "");
     setError("");
