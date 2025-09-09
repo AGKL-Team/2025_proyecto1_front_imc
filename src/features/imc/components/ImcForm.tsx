@@ -5,7 +5,6 @@ export default function ImcForm() {
   const {
     heightInput,
     weightInput,
-    error,
     response,
     calculate,
     handleInputHeight,
@@ -21,9 +20,10 @@ export default function ImcForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="inputField">
-          <label>Altura (m)</label>
+        <div className="mb-3">
+          <label className="form-label">Altura (m)</label>
           <input
+            className="form-control"
             type="number"
             value={parseFloat(heightInput)}
             onChange={(e) => handleInputHeight(e.target.value)}
@@ -31,9 +31,10 @@ export default function ImcForm() {
             min="0.1"
           />
         </div>
-        <div className="inputField">
-          <label>Peso (kg)</label>
+        <div className="mb-3">
+          <label className="form-label">Peso (kg)</label>
           <input
+            className="form-control"
             type="number"
             value={parseFloat(weightInput)}
             onChange={(e) => handleInputWeight(e.target.value)}
@@ -41,7 +42,7 @@ export default function ImcForm() {
             step={"0.1"}
           />
         </div>
-        <button className="button" type="submit">
+        <button className="btn btn-primary" type="submit">
           Calcular
         </button>
       </form>
@@ -50,12 +51,6 @@ export default function ImcForm() {
         <div className="result">
           <p>IMC: {response.imc.toFixed(2)}</p>
           <p>Categoría: {response.categoria}</p>
-        </div>
-      )}
-
-      {error && (
-        <div className="container-invalid">
-          <p className="invalid">{error}</p>
         </div>
       )}
     </div>

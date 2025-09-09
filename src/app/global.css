@@ -1,0 +1,171 @@
+/* =========================
+   VARIABLES GLOBALES
+========================= */
+:root {
+  --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-weight: 400;
+  --line-height: 1.5;
+
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-bg: #242424;
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
+  --color-btn-bg: #1a1a1a;
+  --color-btn-border: transparent;
+  --color-btn-text: white;
+  --color-input-border: #ccc;
+  --color-input-bg: #1e1e1e;
+  --color-result-bg: #1e1e1e;
+  --color-invalid: red;
+  --color-invalid-bg: rgba(255, 0, 0, 0.1);
+
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   RESET Y BODY
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+/* =========================
+   TITULOS Y ENLACES
+========================= */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+a {
+  font-weight: 500;
+  color: var(--color-link);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* =========================
+   BOTONES
+========================= */
+.imc-button {
+  border-radius: 8px;
+  border: 1px solid var(--color-btn-border);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.imc-button:hover {
+  border-color: var(--color-link);
+}
+.imc-button:focus,
+.imc-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* =========================
+   FORMULARIOS Y INPUTS
+========================= */
+.imc-inputField {
+  margin-bottom: 1rem;
+}
+.imc-inputField input {
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
+}
+
+/* =========================
+   RESULTADOS
+========================= */
+.imc-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+  background-color: var(--color-result-bg);
+}
+
+/* =========================
+   MENSAJES DE ERROR
+========================= */
+.imc-container-invalid {
+  border: 1px solid var(--color-invalid);
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-invalid-bg);
+}
+
+.imc-invalid {
+  color: var(--color-invalid);
+  margin-top: 1rem;
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* =========================
+   TEMAS CLARO / OSCURO
+========================= */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: #213547;
+    --color-bg: #ffffff;
+    --color-link-hover: #747bff;
+    --color-btn-bg: #f9f9f9;
+    --color-input-bg: #ffffff;
+    --color-result-bg: #f9f9f9;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #e0e0e0;
+    --color-bg: #121212;
+    --color-btn-bg: #1a73e8;
+    --color-input-bg: #1e1e1e;
+    --color-result-bg: #1e1e1e;
+  }
+}
