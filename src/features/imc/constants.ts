@@ -1,0 +1,1 @@
+export const CALCULATE_IMC = "CALCULATE_IMC";

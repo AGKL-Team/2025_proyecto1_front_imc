@@ -1,0 +1,91 @@
+import LoadingIndicator from "../../../shared/components/LoaderIndicator";
+import { useZodForm } from "../../../shared/hooks/useZodForm";
+import { useSignUp } from "../hooks/useSignUp";
+import { SignUpSchema, type SignUpData } from "../schemas/sign-up-schema";
+
+export default function SignUpForm() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useZodForm(SignUpSchema, {
+    mode: "onChange",
+  });
+  const { signUp, isSigningIn, isSigningUp } = useSignUp();
+
+  const onSubmit = async (data: SignUpData) => {
+    await signUp({
+      email: data.email,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <div className="mb-3">
+        <label htmlFor="email" className="form-label">
+          Correo Electrónico
+        </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="johndoe@gmail.com"
+          className={`form-control ${errors.email ? "is-invalid" : ""}`}
+          {...register("email")}
+        />
+        {errors.email && (
+          <div className="invalid-feedback">{errors.email.message}</div>
+        )}
+      </div>
+
+      <div className="mb-3">
+        <label htmlFor="password" className="form-label">
+          Contraseña
+        </label>
+        <input
+          type="password"
+          id="password"
+          placeholder="********"
+          className={`form-control ${errors.password ? "is-invalid" : ""}`}
+          {...register("password")}
+        />
+        {errors.password && (
+          <div className="invalid-feedback">{errors.password.message}</div>
+        )}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="confirmPassword" className="form-label">
+          Confirmar Contraseña
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="********"
+          className={`form-control ${
+            errors.confirmPassword ? "is-invalid" : ""
+          }`}
+          {...register("confirmPassword")}
+        />
+        {errors.confirmPassword && (
+          <div className="invalid-feedback">
+            {errors.confirmPassword.message}
+          </div>
+        )}
+      </div>
+      <div className="text-center">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isSigningIn || isSigningUp}
+        >
+          {isSigningIn || isSigningUp ? (
+            <LoadingIndicator isLoading={isSigningUp} />
+          ) : (
+            "Registrarse"
+          )}
+        </button>
+      </div>
+    </form>
+  );
+}
