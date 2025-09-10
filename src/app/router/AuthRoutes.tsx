@@ -7,7 +7,7 @@ const AuthRoutes = [
     path: "/auth",
     element: <AuthLayout />,
     children: [
-      { path: "sign-in", element: <SignInPage /> },
+      { path: "log-in", element: <SignInPage /> },
       { path: "sign-up", element: <SignUpPage /> },
     ],
   },

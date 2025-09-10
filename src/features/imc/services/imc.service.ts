@@ -8,8 +8,8 @@ export async function calculateImc(
   request: CalculateImcRequest
 ): Promise<ImcResponse> {
   const response = await axios.post(`${CALCULATE_IMC_ENDPOINT}/imc/calcular`, {
-    altura: request.height,
-    peso: request.weight,
+    height: request.height,
+    weight: request.weight,
   });
   return response.data;
 }

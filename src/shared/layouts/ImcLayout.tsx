@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
-import Logo from "../components/Logo";
-export function AuthLayout() {
+
+export default function ImcLayout() {
   return (
     <div className="d-flex flex-column vh-100 fadeInUp">
       <header>
@@ -12,19 +12,11 @@ export function AuthLayout() {
           </div>
         </nav>
       </header>
-      <main className="d-flex justify-content-evenly flex-grow-1">
-        <section
-          style={{ backgroundColor: "#E6E6FA" }}
-          className="d-none d-lg-flex flex-grow-1 align-items-center justify-content-center"
-        >
-          <Logo />
-        </section>
-        <section className="d-flex flex-grow-1 align-items-center justify-content-center">
-          <Outlet />
-        </section>
+      <main className="d-flex justify-content-evenly flex-grow-1 flex-column">
+        <Outlet />
       </main>
       <footer className="bg-light text-center p-3 border-top mt-auto">
-        &copy; 2025 Calculadora IMC
+        &copy; 2025 AGKL Team
       </footer>
     </div>
   );

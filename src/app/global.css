@@ -28,13 +28,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 /* =========================
-   RESET Y BODY
+  BODY
 ========================= */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -67,44 +67,6 @@ a:hover {
 }
 
 /* =========================
-   BOTONES
-========================= */
-.imc-button {
-  border-radius: 8px;
-  border: 1px solid var(--color-btn-border);
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--color-btn-bg);
-  color: var(--color-btn-text);
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-.imc-button:hover {
-  border-color: var(--color-link);
-}
-.imc-button:focus,
-.imc-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* =========================
-   FORMULARIOS Y INPUTS
-========================= */
-.imc-inputField {
-  margin-bottom: 1rem;
-}
-.imc-inputField input {
-  border: 1px solid var(--color-input-border);
-  border-radius: 4px;
-  padding: 0.5rem;
-  width: 100%;
-  background-color: var(--color-input-bg);
-  color: var(--color-text);
-}
-
-/* =========================
    RESULTADOS
 ========================= */
 .imc-result {
@@ -116,34 +78,16 @@ a:hover {
 }
 
 /* =========================
-   MENSAJES DE ERROR
-========================= */
-.imc-container-invalid {
-  border: 1px solid var(--color-invalid);
-  border-radius: 4px;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-invalid-bg);
-}
-
-.imc-invalid {
-  color: var(--color-invalid);
-  margin-top: 1rem;
-}
-
-/* =========================
    CONTENEDOR PRINCIPAL
 ========================= */
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 /* =========================
@@ -167,5 +111,24 @@ a:hover {
     --color-btn-bg: #1a73e8;
     --color-input-bg: #1e1e1e;
     --color-result-bg: #1e1e1e;
+  }
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+.fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

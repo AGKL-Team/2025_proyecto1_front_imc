@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import "../../App.css";
+import "../../app/global.css";
 
 export default function MainLayout() {
   return (
@@ -8,7 +8,7 @@ export default function MainLayout() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
           <div className="container-fluid">
             <Link to="/" className="navbar-brand">
-              CarGo
+              Calculadora IMC
             </Link>
             <button
               className="navbar-toggler"

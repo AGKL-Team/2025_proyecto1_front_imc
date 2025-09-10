@@ -1,56 +1,67 @@
-import React from "react";
+import LoadingIndicator from "../../../shared/components/LoaderIndicator";
+import { useZodForm } from "../../../shared/hooks/useZodForm";
 import { useCalculateImc } from "../hooks/useCalculateImc";
+import { CalculateImcSchema } from "../schemas/calculate-imc.schema";
 
 export default function ImcForm() {
   const {
-    heightInput,
-    weightInput,
-    response,
-    calculate,
-    handleInputHeight,
-    handleInputWeight,
-  } = useCalculateImc();
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useZodForm(CalculateImcSchema, {
+    mode: "all",
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const { calculateImc, isPending, imcResponse } = useCalculateImc();
 
-    calculate();
+  const onSubmit = (formData: CalculateImcSchema) => {
+    calculateImc(formData);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label className="form-label">Altura (m)</label>
           <input
-            className="form-control"
             type="number"
-            value={parseFloat(heightInput)}
-            onChange={(e) => handleInputHeight(e.target.value)}
-            step="0.01"
+            step={"0.01"}
             min="0.1"
+            max="3"
+            className={`form-control${errors.height ? " is-invalid" : ""}`}
+            {...register("height")}
           />
+          {errors.height && (
+            <div className="invalid-feedback">{errors.height.message}</div>
+          )}
         </div>
         <div className="mb-3">
           <label className="form-label">Peso (kg)</label>
           <input
-            className="form-control"
             type="number"
-            value={parseFloat(weightInput)}
-            onChange={(e) => handleInputWeight(e.target.value)}
             min="1"
+            max="500"
             step={"0.1"}
+            className={`form-control${errors.weight ? " is-invalid" : ""}`}
+            {...register("weight")}
           />
+          {errors.weight && (
+            <div className="invalid-feedback">{errors.weight.message}</div>
+          )}
         </div>
-        <button className="btn btn-primary" type="submit">
-          Calcular
+        <button className="btn btn-primary" type="submit" disabled={isPending}>
+          {isPending ? (
+            <LoadingIndicator isLoading={isPending} message="Calculando..." />
+          ) : (
+            "Calcular"
+          )}
         </button>
       </form>
 
-      {response && (
+      {imcResponse && (
         <div className="result">
-          <p>IMC: {response.imc.toFixed(2)}</p>
-          <p>Categoría: {response.categoria}</p>
+          <p>IMC: {imcResponse.imc.toFixed(2)}</p>
+          <p>Categoría: {imcResponse.categoria}</p>
         </div>
       )}
     </div>

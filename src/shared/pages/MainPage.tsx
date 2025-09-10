@@ -43,7 +43,7 @@ export default function MainPage() {
       </div>
 
       <div className="text-center mt-4">
-        <Link to="/imc/calculadora" className="btn btn-primary btn-lg">
+        <Link to="/imc" className="btn btn-primary btn-lg">
           Empezar ahora
         </Link>
       </div>
