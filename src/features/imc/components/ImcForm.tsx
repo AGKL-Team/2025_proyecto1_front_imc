@@ -22,8 +22,11 @@ export default function ImcForm() {
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
-          <label className="form-label">Altura (m)</label>
+          <label className="form-label" htmlFor="height">
+            Altura (m)
+          </label>
           <input
+            id="height"
             type="number"
             step={"0.01"}
             min="0.1"
@@ -36,8 +39,11 @@ export default function ImcForm() {
           )}
         </div>
         <div className="mb-3">
-          <label className="form-label">Peso (kg)</label>
+          <label className="form-label" htmlFor="weight">
+            Peso (kg)
+          </label>
           <input
+            id="weight"
             type="number"
             min="1"
             max="500"
