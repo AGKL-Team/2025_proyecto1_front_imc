@@ -18,9 +18,18 @@ export async function calculateImc(
   return response.data;
 }
 
-export async function getImcHistory(): Promise<ImcResponse[]> {
+export async function getImcHistory(filters: {
+  dateFrom?: string | undefined;
+  dateTo?: string | undefined;
+}): Promise<ImcResponse[]> {
   const response = await httpClient.get<ImcResponse[]>(
-    `${CALCULATE_IMC_ENDPOINT}/imc/history`
+    `${CALCULATE_IMC_ENDPOINT}/imc/history`,
+    {
+      params: {
+        startDate: filters.dateFrom,
+        endDate: filters.dateTo,
+      },
+    }
   );
 
   if (response.status !== 200) {

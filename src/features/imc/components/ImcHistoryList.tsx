@@ -1,13 +1,26 @@
 import LoadingIndicator from "../../../shared/components/LoaderIndicator";
 import { useImcHistory } from "../hooks/useImcHistory";
+import { ImcHistoryFiltersSchema } from "../schemas/imc-history-filters.schema";
 
-export default function ImcHistoryList() {
-  const { isLoading, records } = useImcHistory();
+interface ImcHistoryListProps {
+  filters: ImcHistoryFiltersSchema;
+}
+
+export default function ImcHistoryList({ filters }: ImcHistoryListProps) {
+  const { isLoading, records } = useImcHistory(filters);
 
   return (
-    <div id="imc-history-list" className="mt-4">
+    <div
+      id="imc-history-list"
+      className="mt-4"
+      style={{
+        borderRadius: 8,
+        overflow: "hidden",
+        border: "1px solid var(--color-text)",
+      }}
+    >
       {isLoading && <LoadingIndicator isLoading={isLoading} />}
-      <table className="table table-hover">
+      <table className="table theme-table">
         <thead>
           <tr>
             <th scope="col">Fecha</th>

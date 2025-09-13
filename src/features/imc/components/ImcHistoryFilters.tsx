@@ -1,21 +1,42 @@
-export default function ImcHistoryFilters() {
+import { ImcHistoryFiltersSchema } from "../schemas/imc-history-filters.schema";
+
+interface ImcHistoryFiltersProps {
+  filters: ImcHistoryFiltersSchema;
+  setFilters: (filters: ImcHistoryFiltersSchema) => void;
+}
+
+export default function ImcHistoryFilters({
+  filters,
+  setFilters,
+}: ImcHistoryFiltersProps) {
   return (
-    <div id="filters" className="container card p-3 mb-4">
+    <div id="filters" className="container card p-3 mb-4 theme-card">
       <div className="row mb-3">
-        <div className="col-md-4">
+        <div className="col-md-6">
           <label htmlFor="dateFrom" className="form-label">
             Fecha Desde:
           </label>
-          <input type="date" id="dateFrom" className="form-control" />
+          <input
+            type="date"
+            id="dateFrom"
+            className="form-control"
+            value={filters.dateFrom ?? ""}
+            onChange={(e) =>
+              setFilters({ ...filters, dateFrom: e.target.value })
+            }
+          />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-6">
           <label htmlFor="dateTo" className="form-label">
             Fecha Hasta:
           </label>
-          <input type="date" id="dateTo" className="form-control" />
-        </div>
-        <div className="col-md-4 d-flex align-items-end">
-          <button className="btn btn-primary w-100">Filtrar</button>
+          <input
+            type="date"
+            id="dateTo"
+            className="form-control"
+            value={filters.dateTo ?? ""}
+            onChange={(e) => setFilters({ ...filters, dateTo: e.target.value })}
+          />
         </div>
       </div>
     </div>

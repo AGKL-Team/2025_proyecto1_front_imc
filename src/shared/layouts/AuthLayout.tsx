@@ -23,7 +23,6 @@ export function AuthLayout() {
           className="d-flex flex-grow-1 align-items-center justify-content-center"
           style={{
             borderRadius: 20,
-            backgroundColor: "#ffffffcc",
             boxShadow: "0 2px 10px 0px var(--color-text)",
           }}
         >
