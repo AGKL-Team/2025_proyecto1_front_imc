@@ -6,7 +6,7 @@ export default function ImcLayout() {
       <header>
         <nav className="navbar navbar-expand-lg border-bottom theme-navbar">
           <div className="container-fluid">
-            <Link to="/" className="navbar-brand">
+            <Link to="/imc" className="navbar-brand">
               Calculadora IMC
             </Link>
             {/* Botón toggler para menú hamburguesa */}

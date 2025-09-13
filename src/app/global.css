@@ -134,6 +134,11 @@ textarea:focus {
   color: var(--theme-navbar-text);
   box-shadow: 0 2px 10px 0px var(--color-text);
 }
+.theme-card {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  border: 1px solid var(--color-input-border);
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

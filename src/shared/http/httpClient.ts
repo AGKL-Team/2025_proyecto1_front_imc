@@ -45,6 +45,7 @@ httpClient.interceptors.request.use(function (config) {
 
   if (!shouldExclude && access_token) {
     config.headers.set("Authorization", `Bearer ${access_token}`);
+    config.withCredentials = true;
   }
 
   return config;
