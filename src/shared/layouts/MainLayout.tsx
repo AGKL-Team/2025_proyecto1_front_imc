@@ -3,9 +3,9 @@ import "../../app/global.css";
 
 export default function MainLayout() {
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <header style={{ boxShadow: "0 2px 20px 0px black" }}>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div className="d-flex flex-column min-vh-100 theme-responsive">
+      <header>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom theme-navbar">
           <div className="container-fluid">
             <Link to="/" className="navbar-brand">
               Calculadora IMC
@@ -34,14 +34,11 @@ export default function MainLayout() {
         </nav>
       </header>
 
-      <main className="container-fluid" style={{ padding: 20 }}>
+      <main className="container-fluid theme-main" style={{ padding: 20 }}>
         <Outlet />
       </main>
 
-      <footer
-        style={{ boxShadow: "0 2px 10px 0px black" }}
-        className="bg-light text-center p-3 border-top mt-auto"
-      >
+      <footer className="text-center p-3 border-top mt-auto theme-footer">
         &copy; 2025 - AGKL Team
       </footer>
     </div>

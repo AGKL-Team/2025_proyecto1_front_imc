@@ -13,9 +13,9 @@ export default function HomePage() {
           <div className="card h-100 shadow-sm">
             <div className="card-body">
               <h5 className="card-title">Nuevo Registro</h5>
-              <img src="https://img.icons8.com/?size=100&id=N1YpxWjnXLGs&format=png&color=000000" />
+              <img src="https://img.icons8.com/?size=100&id=69QPdUHJ1fb4&format=png&color=000000" />
               <p className="card-text">Calculá tu índice de masa corporal.</p>
-              <a href="imc/calcular" className="btn btn-success">
+              <a href="calculate" className="btn btn-success">
                 Calcular
               </a>
             </div>
@@ -28,7 +28,7 @@ export default function HomePage() {
               <h5 className="card-title">Historial de Reservas</h5>
               <img src="https://img.icons8.com/?size=100&id=QZmOrGcsX4DO&format=png&color=000000" />
               <p className="card-text">Consultá todos tus registros.</p>
-              <a href="imc/historial" className="btn btn-outline-primary">
+              <a href="history" className="btn btn-outline-primary">
                 Ver Historial
               </a>
             </div>
