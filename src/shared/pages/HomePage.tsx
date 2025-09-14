@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuthStore } from "../../features/auth/hooks/useAuthStore";
 
 export default function HomePage() {
@@ -15,9 +16,9 @@ export default function HomePage() {
               <h5 className="card-title">Nuevo Registro</h5>
               <img src="https://img.icons8.com/?size=100&id=69QPdUHJ1fb4&format=png&color=000000" />
               <p className="card-text">Calculá tu índice de masa corporal.</p>
-              <a href="imc/calculate" className="btn btn-success">
+              <Link to="/imc/calculate" className="btn btn-success">
                 Calcular
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -28,9 +29,9 @@ export default function HomePage() {
               <h5 className="card-title">Historial de Reservas</h5>
               <img src="https://img.icons8.com/?size=100&id=QZmOrGcsX4DO&format=png&color=000000" />
               <p className="card-text">Consultá todos tus registros.</p>
-              <a href="imc/history" className="btn btn-outline-primary">
+              <Link to="/imc/history" className="btn btn-outline-primary">
                 Ver Historial
-              </a>
+              </Link>
             </div>
           </div>
         </div>
