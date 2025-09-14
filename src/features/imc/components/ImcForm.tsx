@@ -65,9 +65,14 @@ export default function ImcForm() {
       </form>
 
       {imcResponse && (
-        <div className="result">
-          <p>IMC: {imcResponse.imc.toFixed(2)}</p>
-          <p>Categoría: {imcResponse.category.name}</p>
+        <div className="alert alert-info mt-4 shadow-sm rounded text-center">
+          <h5 className="mb-2">Resultado</h5>
+          <p className="mb-1">
+            <strong>IMC:</strong> {imcResponse.imc.toFixed(2)}
+          </p>
+          <p className="mb-0">
+            <strong>Categoría:</strong> {imcResponse.category}
+          </p>
         </div>
       )}
     </div>
