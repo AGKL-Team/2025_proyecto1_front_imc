@@ -24,9 +24,9 @@ export default function MainLayout() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a href="/auth/log-in" className="btn btn-outline-primary">
+                  <Link to="/auth/log-in" className="btn btn-outline-primary">
                     Log In
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
