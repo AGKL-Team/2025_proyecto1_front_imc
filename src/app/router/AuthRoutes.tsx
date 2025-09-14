@@ -1,6 +1,7 @@
+import EmailConfirmationPage from "../../features/auth/pages/EmailConfirmationPage";
+import SignInPage from "../../features/auth/pages/log_in_page";
+import SignUpPage from "../../features/auth/pages/sign_up_page";
 import { AuthLayout } from "../../shared/layouts/AuthLayout";
-import SignInPage from "../../shared/pages/auth/log_in_page";
-import SignUpPage from "../../shared/pages/auth/sign_up_page";
 
 const AuthRoutes = [
   {
@@ -9,6 +10,8 @@ const AuthRoutes = [
     children: [
       { path: "log-in", element: <SignInPage /> },
       { path: "sign-up", element: <SignUpPage /> },
+      { path: "confirm-email", element: <EmailConfirmationPage /> },
+      { path: "email-confirmed", element: <EmailConfirmationPage /> },
     ],
   },
 ];

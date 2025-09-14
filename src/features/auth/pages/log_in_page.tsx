@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogInForm from "../../../features/auth/components/log-in-form";
+import LogInForm from "../components/log-in-form";
 
 export default function SignInPage() {
   return (
