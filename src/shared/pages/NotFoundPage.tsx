@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function NotFoundPage() {
   return (
     <div className="container text-center py-5">
@@ -6,9 +8,9 @@ export default function NotFoundPage() {
       <img src="https://img.icons8.com/?size=100&id=pOF8SIG66Ztb&format=png&color=000000" />
       <p>Lo sentimos, la página que buscas no existe.</p>
 
-      <a href="/redirect" className="btn btn-primary mt-3">
+      <Link to="/redirect" className="btn btn-primary mt-3">
         Volver
-      </a>
+      </Link>
     </div>
   );
 }

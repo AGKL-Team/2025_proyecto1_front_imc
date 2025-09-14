@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SignUpForm from "../../../features/auth/components/sign-up-form";
 
 export default function SignUpPage() {
@@ -7,7 +8,7 @@ export default function SignUpPage() {
       <SignUpForm />
       <div className="text-center p-2">
         <p>
-          ¿Ya tenés una cuenta? <a href="/auth/log-in">Iniciá Sesión</a>
+          ¿Ya tenés una cuenta? <Link to="/auth/log-in">Iniciá Sesión</Link>
         </p>
       </div>
     </div>
