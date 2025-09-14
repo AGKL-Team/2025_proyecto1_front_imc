@@ -2,8 +2,18 @@ import { delay, http, HttpResponse } from "msw";
 import { ImcResponse } from "../../../features/imc/interfaces/imc-response.interface";
 
 const IMC_RESPONSE: ImcResponse = {
+  id: 1,
   imc: 24.22,
-  categoria: "Normal",
+  category: {
+    id: 2,
+    name: "Normal",
+    min: 18.51,
+    max: 25,
+  },
+  date: new Date().toISOString(),
+  height: 1.7,
+  userId: "1",
+  weight: 70,
 };
 
 export const imcHandlers = [
