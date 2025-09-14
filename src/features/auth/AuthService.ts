@@ -25,6 +25,8 @@ export async function signUp(request: SignUpRequest) {
     password: request.password,
   });
 
+  console.log(response.data);
+
   if (response.status !== 201) toast.error("Error al registrar el usuario");
   else toast.success("Usuario registrado con éxito");
 }
