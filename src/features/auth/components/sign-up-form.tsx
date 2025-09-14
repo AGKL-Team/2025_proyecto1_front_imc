@@ -17,7 +17,6 @@ export default function SignUpForm() {
     await signUp({
       email: data.email,
       password: data.password,
-      confirmPassword: data.confirmPassword,
     });
   };
 

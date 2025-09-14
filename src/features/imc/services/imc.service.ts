@@ -1,4 +1,5 @@
-import axios from "axios";
+import { toast } from "sonner";
+import { httpClient } from "../../../shared/http/httpClient";
 import { CalculateImcRequest } from "../interfaces/imc-request.interface";
 import { ImcResponse } from "../interfaces/imc-response.interface";
 
@@ -7,9 +8,33 @@ const CALCULATE_IMC_ENDPOINT = import.meta.env.VITE_BACKEND_URL;
 export async function calculateImc(
   request: CalculateImcRequest
 ): Promise<ImcResponse> {
-  const response = await axios.post(`${CALCULATE_IMC_ENDPOINT}/imc/calcular`, {
-    height: request.height,
-    weight: request.weight,
-  });
+  const response = await httpClient.post(
+    `${CALCULATE_IMC_ENDPOINT}/imc/calcular`,
+    {
+      height: request.height,
+      weight: request.weight,
+    }
+  );
+  return response.data;
+}
+
+export async function getImcHistory(filters: {
+  dateFrom?: string | undefined;
+  dateTo?: string | undefined;
+}): Promise<ImcResponse[]> {
+  const response = await httpClient.get<ImcResponse[]>(
+    `${CALCULATE_IMC_ENDPOINT}/imc/history`,
+    {
+      params: {
+        startDate: filters.dateFrom,
+        endDate: filters.dateTo,
+      },
+    }
+  );
+
+  if (response.status !== 200) {
+    toast.error("Ocurrió un error al obtener el historial de IMC");
+  }
+
   return response.data;
 }

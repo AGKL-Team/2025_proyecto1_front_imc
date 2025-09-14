@@ -17,10 +17,10 @@ httpClient.interceptors.response.use(
   (error: AxiosError<ErrorResponse>) => {
     console.log(error.response?.data);
 
-    const status = error.response?.data.detail.status_code;
-    const titulo = error.response?.data?.detail.titulo ?? "Error";
+    const status = error.response?.data.statusCode;
+    const titulo = "Error";
     const detalle =
-      error.response?.data?.detail.detalle ?? "Ocurrió un error inesperado.";
+      error.response?.data?.message ?? "Ocurrió un error inesperado.";
 
     toast.error(titulo, {
       description: detalle,
@@ -45,6 +45,7 @@ httpClient.interceptors.request.use(function (config) {
 
   if (!shouldExclude && access_token) {
     config.headers.set("Authorization", `Bearer ${access_token}`);
+    config.withCredentials = true;
   }
 
   return config;

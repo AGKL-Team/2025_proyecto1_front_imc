@@ -20,7 +20,10 @@ export async function signIn(request: LoginData): Promise<SignInResponse> {
 }
 
 export async function signUp(request: SignUpRequest) {
-  const response = await httpClient.post(`${AUTH_ENDPOINT}/sign-up`, request);
+  const response = await httpClient.post(`${AUTH_ENDPOINT}/sign-up`, {
+    email: request.email,
+    password: request.password,
+  });
 
   if (response.status !== 201) toast.error("Error al registrar el usuario");
   else toast.success("Usuario registrado con éxito");

@@ -9,7 +9,12 @@ vi.mock("../hooks/useCalculateImc", () => {
     useCalculateImc: () => ({
       calculateImc,
       isPending: false,
-      imcResponse: { imc: 24.4897, categoria: "Normal" },
+      imcResponse: {
+        imc: 24.4897,
+        category: {
+          name: "Normal",
+        },
+      },
     }),
   };
 });

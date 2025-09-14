@@ -1,7 +1,5 @@
 export interface ErrorResponse {
-  detail: {
-    titulo: string;
-    detalle: string;
-    status_code: number;
-  };
+  message: string;
+  error: string;
+  statusCode: number;
 }
