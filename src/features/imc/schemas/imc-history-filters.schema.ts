@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const ImcHistoryFiltersSchema = z
+export const ImcFiltersSchema = z
   .object({
     dateFrom: z.string().optional(),
     dateTo: z.string().optional(),
@@ -17,4 +17,4 @@ export const ImcHistoryFiltersSchema = z
     }
   );
 
-export type ImcHistoryFiltersSchema = z.infer<typeof ImcHistoryFiltersSchema>;
+export type ImcFiltersSchema = z.infer<typeof ImcFiltersSchema>;

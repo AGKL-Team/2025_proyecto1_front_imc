@@ -1,3 +1,4 @@
+import ImcEvolutionPage from "../../features/imc/pages/ImcEvolutionPage";
 import ImcHistoryPage from "../../features/imc/pages/ImcHistoryPage";
 import { ImcPage } from "../../features/imc/pages/ImcPage";
 import ImcLayout from "../../shared/layouts/ImcLayout";
@@ -19,6 +20,10 @@ const ImcRoutes = [
       {
         path: "history",
         element: <ImcHistoryPage />,
+      },
+      {
+        path: "evolution",
+        element: <ImcEvolutionPage />,
       },
     ],
   },

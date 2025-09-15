@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { IMC_HISTORY } from "../constants";
-import { ImcHistoryFiltersSchema } from "../schemas/imc-history-filters.schema";
+import { ImcFiltersSchema } from "../schemas/imc-history-filters.schema";
 import { getImcHistory } from "../services/imc.service";
 
-export const useImcHistory = (filters: ImcHistoryFiltersSchema) => {
+export const useImcHistory = (filters: ImcFiltersSchema) => {
   const { data, isLoading } = useQuery({
     queryKey: [IMC_HISTORY, filters],
     queryFn: async () => {

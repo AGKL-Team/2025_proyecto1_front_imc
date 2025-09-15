@@ -1,15 +1,15 @@
-import ImcHistoryFilters from "../components/ImcHistoryFilters";
+import ImcFilters from "../components/ImcHistoryFilters";
 import ImcHistoryList from "../components/ImcHistoryList";
-import { useImcHistoryFilters } from "../hooks/useImcHistoryFilters";
+import { useImcFilters } from "../hooks/useImcHistoryFilters";
 
 export default function ImcHistoryPage() {
-  const { filters, setFilters } = useImcHistoryFilters();
+  const { filters, setFilters } = useImcFilters();
 
   return (
     <>
       <div className="container py-5">
-        <h2>IMC History</h2>
-        <ImcHistoryFilters filters={filters} setFilters={setFilters} />
+        <h2>Historial</h2>
+        <ImcFilters filters={filters} setFilters={setFilters} />
         <ImcHistoryList filters={filters} />
       </div>
     </>
