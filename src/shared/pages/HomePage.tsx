@@ -26,7 +26,7 @@ export default function HomePage() {
         <div className="col-md-6 mb-4">
           <div className="card h-100 shadow-sm theme-card">
             <div className="card-body">
-              <h5 className="card-title">Historial de Reservas</h5>
+              <h5 className="card-title">Historial</h5>
               <img src="https://img.icons8.com/?size=100&id=QZmOrGcsX4DO&format=png&color=000000" />
               <p className="card-text">Consultá todos tus registros.</p>
               <Link to="/imc/history" className="btn btn-outline-primary">

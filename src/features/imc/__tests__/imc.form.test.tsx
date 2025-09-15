@@ -11,9 +11,7 @@ vi.mock("../hooks/useCalculateImc", () => {
       isPending: false,
       imcResponse: {
         imc: 24.4897,
-        category: {
-          name: "Normal",
-        },
+        category: "Normal",
       },
     }),
   };
@@ -23,7 +21,7 @@ describe("ImcForm", () => {
   it("renders form fields and result", () => {
     render(<ImcForm />);
     expect(screen.getByLabelText(/Altura/i)).toBeInTheDocument();
-    expect(screen.getByText(/IMC:/i)).toHaveTextContent("IMC: 24.49");
+    expect(screen.getByLabelText(/Peso/i)).toBeInTheDocument();
   });
 
   it("should sent data and show result", async () => {
@@ -37,6 +35,10 @@ describe("ImcForm", () => {
 
     expect(screen.getByLabelText(/Altura/i)).toHaveValue(1.7);
     expect(screen.getByLabelText(/Peso/i)).toHaveValue(70);
-    expect(screen.getByText(/IMC:/i)).toHaveTextContent("IMC: 24.49");
+    expect(screen.getByText(/Resultado/i)).toBeInTheDocument();
+    expect(screen.getByText(/IMC:/i)).toBeInTheDocument();
+    expect(screen.getByText("24.49")).toBeInTheDocument();
+    expect(screen.getByText(/Categoría:/i)).toBeInTheDocument();
+    expect(screen.getByText("Normal")).toBeInTheDocument();
   });
 });
