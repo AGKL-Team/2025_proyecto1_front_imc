@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="text-center mb-4">Hola, {authResponse?.email}</div>
 
       <div className="row text-center">
-        <div className="col-md-6 mb-4">
+        <div className="col-md-4 mb-4">
           <div className="card h-100 shadow-sm theme-card">
             <div className="card-body">
               <h5 className="card-title">Nuevo Registro</h5>
@@ -23,7 +23,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="col-md-6 mb-4">
+        <div className="col-md-4 mb-4">
           <div className="card h-100 shadow-sm theme-card">
             <div className="card-body">
               <h5 className="card-title">Historial</h5>
@@ -31,6 +31,21 @@ export default function HomePage() {
               <p className="card-text">Consultá todos tus registros.</p>
               <Link to="/imc/history" className="btn btn-outline-primary">
                 Ver Historial
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-4 mb-4">
+          <div className="card h-100 shadow-sm theme-card">
+            <div className="card-body">
+              <h5 className="card-title">Evolución</h5>
+              <img src="https://img.icons8.com/?size=100&id=DAoPjn2XoTUN&format=png&color=000000" />
+              <p className="card-text">
+                Consultá tu evolución a lo largo del tiempo.
+              </p>
+              <Link to="/imc/evolution" className="btn btn-danger">
+                Ver Evolución
               </Link>
             </div>
           </div>

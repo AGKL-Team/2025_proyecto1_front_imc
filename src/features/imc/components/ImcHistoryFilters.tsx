@@ -1,14 +1,11 @@
-import { ImcHistoryFiltersSchema } from "../schemas/imc-history-filters.schema";
+import { ImcFiltersSchema } from "../schemas/imc-history-filters.schema";
 
-interface ImcHistoryFiltersProps {
-  filters: ImcHistoryFiltersSchema;
-  setFilters: (filters: ImcHistoryFiltersSchema) => void;
+interface ImcFiltersProps {
+  filters: ImcFiltersSchema;
+  setFilters: (filters: ImcFiltersSchema) => void;
 }
 
-export default function ImcHistoryFilters({
-  filters,
-  setFilters,
-}: ImcHistoryFiltersProps) {
+export default function ImcFilters({ filters, setFilters }: ImcFiltersProps) {
   return (
     <div id="filters" className="container card p-3 mb-4 theme-card">
       <div className="row mb-3">

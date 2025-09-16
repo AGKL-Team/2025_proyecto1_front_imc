@@ -33,7 +33,12 @@ export default function ImcLayout() {
                 </li>
                 <li className="nav-item">
                   <Link to="/imc/history" className="nav-link">
-                    Historial IMC
+                    Historial
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/imc/evolution" className="nav-link">
+                    Evolución
                   </Link>
                 </li>
               </ul>

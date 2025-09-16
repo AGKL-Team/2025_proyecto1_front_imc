@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { ImcHistoryFiltersSchema } from "./../schemas/imc-history-filters.schema";
+import { ImcFiltersSchema } from "./../schemas/imc-history-filters.schema";
 
-export const useImcHistoryFilters = () => {
-  const [filters, setFilters] = useState<ImcHistoryFiltersSchema>({
+export const useImcFilters = () => {
+  const [filters, setFilters] = useState<ImcFiltersSchema>({
     dateFrom: undefined,
     dateTo: undefined,
   });

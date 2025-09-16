@@ -1,9 +1,9 @@
 import LoadingIndicator from "../../../shared/components/LoaderIndicator";
 import { useImcHistory } from "../hooks/useImcHistory";
-import { ImcHistoryFiltersSchema } from "../schemas/imc-history-filters.schema";
+import { ImcFiltersSchema } from "../schemas/imc-history-filters.schema";
 
 interface ImcHistoryListProps {
-  filters: ImcHistoryFiltersSchema;
+  filters: ImcFiltersSchema;
 }
 
 export default function ImcHistoryList({ filters }: ImcHistoryListProps) {
