@@ -1,5 +1,6 @@
 import LoadingIndicator from "../../../shared/components/LoaderIndicator";
 import { useZodForm } from "../../../shared/hooks/useZodForm";
+import { useAuthStore } from "../../auth/hooks/useAuthStore";
 import { useCalculateImc } from "../hooks/useCalculateImc";
 import { CalculateImcSchema } from "../schemas/calculate-imc.schema";
 
@@ -11,7 +12,7 @@ export default function ImcForm() {
   } = useZodForm(CalculateImcSchema, {
     mode: "all",
   });
-
+  const { authResponse } = useAuthStore();
   const { calculateImc, isPending, imcResponse } = useCalculateImc();
 
   const onSubmit = (formData: CalculateImcSchema) => {
@@ -33,6 +34,9 @@ export default function ImcForm() {
             max="3"
             className={`form-control${errors.height ? " is-invalid" : ""}`}
             {...register("height")}
+            defaultValue={authResponse?.height || ""}
+            readOnly={!!authResponse?.height}
+            value={authResponse?.height || undefined}
           />
           {errors.height && (
             <div className="invalid-feedback">{errors.height.message}</div>
