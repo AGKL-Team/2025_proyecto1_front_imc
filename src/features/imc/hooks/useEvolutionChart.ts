@@ -1,6 +1,6 @@
 import { ImcResponse } from "../interfaces/imc-response.interface";
 
-export const useEvolutionChart = (records: ImcResponse[]) => {
+export const useEvolutionStatistics = (records: ImcResponse[]) => {
   const count = records.length;
   const average =
     count === 0

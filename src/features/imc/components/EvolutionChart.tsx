@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   CartesianGrid,
   Legend,
@@ -7,175 +8,49 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useEvolutionChart } from "../hooks/useEvolutionChart";
-import { ImcResponse } from "../interfaces/imc-response.interface";
+import LoadingIndicator from "../../../shared/components/LoaderIndicator";
+import { usePreferenceTheme } from "../../../shared/hooks/usePreferenceTheme";
+import { useWindowSize } from "../../../shared/hooks/useWindowSize";
+import { useImcHistory } from "../hooks/useImcHistory";
 import { ImcFiltersSchema } from "../schemas/imc-history-filters.schema";
-import ImcFilters from "./ImcHistoryFilters";
+import EvolutionStatistics from "./EvolutionStatistics";
 
 interface EvolutionChartProps {
   filters: ImcFiltersSchema;
   setFilters: (filters: ImcFiltersSchema) => void;
 }
 
-const records: ImcResponse[] = [
-  {
-    id: 1,
-    date: "2025-01-01",
-    weight: 70,
-    height: 1.75,
-    imc: 22.86,
-    category: {
-      id: 1,
-      name: "Normal",
-      min: 0,
-      max: 24.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 2,
-    date: "2025-02-01",
-    weight: 72,
-    height: 1.75,
-    imc: 23.51,
-    category: {
-      id: 1,
-      name: "Normal",
-      min: 0,
-      max: 24.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 3,
-    date: "2025-03-01",
-    weight: 74,
-    height: 1.75,
-    imc: 24.16,
-    category: {
-      id: 1,
-      name: "Normal",
-      min: 0,
-      max: 24.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 4,
-    date: "2025-04-01",
-    weight: 76,
-    height: 1.75,
-    imc: 24.81,
-    category: {
-      id: 1,
-      name: "Normal",
-      min: 0,
-      max: 24.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 5,
-    date: "2025-05-01",
-    weight: 78,
-    height: 1.75,
-    imc: 25.47,
-    category: {
-      id: 2,
-      name: "Sobrepeso",
-      min: 25,
-      max: 29.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 6,
-    date: "2025-06-01",
-    weight: 80,
-    height: 1.75,
-    imc: 26.12,
-    category: {
-      id: 2,
-      name: "Sobrepeso",
-      min: 25,
-      max: 29.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 7,
-    date: "2025-07-01",
-    weight: 79,
-    height: 1.75,
-    imc: 25.79,
-    category: {
-      id: 2,
-      name: "Sobrepeso",
-      min: 25,
-      max: 29.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 8,
-    date: "2025-08-01",
-    weight: 77,
-    height: 1.75,
-    imc: 25.14,
-    category: {
-      id: 2,
-      name: "Sobrepeso",
-      min: 25,
-      max: 29.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 9,
-    date: "2025-09-01",
-    weight: 75,
-    height: 1.75,
-    imc: 24.49,
-    category: {
-      id: 1,
-      name: "Normal",
-      min: 0,
-      max: 24.9,
-    },
-    userId: "some-user-id",
-  },
-  {
-    id: 10,
-    date: "2025-10-01",
-    weight: 73,
-    height: 1.75,
-    imc: 23.84,
-    category: {
-      id: 1,
-      name: "Normal",
-      min: 0,
-      max: 24.9,
-    },
-    userId: "some-user-id",
-  },
-];
+export default function EvolutionChart({ filters }: EvolutionChartProps) {
+  const { records, isLoading } = useImcHistory(filters);
+  const { isDarkMode } = usePreferenceTheme();
+  const { height, width } = useWindowSize();
 
-export default function EvolutionChart({
-  filters,
-  setFilters,
-}: EvolutionChartProps) {
-  // const { records, isLoading } = useImcHistory(filters);
-  const { average, variation, count } = useEvolutionChart(records);
+  const chartData = useMemo(
+    () =>
+      records?.map((record) => ({
+        date: new Date(record.date).toLocaleDateString(),
+        weight: record.weight,
+      })),
+    [records]
+  );
+
+  if (!records) {
+    return (
+      <div className="alert alert-danger">
+        No se han encontrado registros para los filtros seleccionados.
+      </div>
+    );
+  }
 
   return (
-    <>
-      {/* {isLoading && <LoadingIndicator isLoading />} */}
-      <ImcFilters filters={filters} setFilters={setFilters} />
-      <div className="d-flex flex-row align-items-center justify-content-evenly">
+    <div className="mt-4" style={{ overflow: "hidden" }}>
+      {isLoading && <LoadingIndicator isLoading />}
+      <div className="d-flex align-items-center justify-content-evenly flex-wrap">
         <LineChart
-          height={350}
-          width={600}
-          data={records}
+          className="col-sm-12 col-lg-4 shadow-sm rounded"
+          height={Math.min(400, height * 0.6)}
+          width={Math.min(700, width * 0.9)}
+          data={chartData}
           margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
         >
           <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
@@ -184,30 +59,26 @@ export default function EvolutionChart({
             name="Peso (Kg)"
             type={"monotone"}
             strokeWidth={2}
-            stroke="blue"
+            stroke={isDarkMode ? "#65ecd6ff" : "#007bff"}
           />
-          <XAxis dataKey={"date"} />
-          <YAxis />
+          <XAxis dataKey={"date"} interval={"equidistantPreserveStart"} />
+          <YAxis
+            interval={"preserveStart"}
+            label={{ value: "Peso (Kg)", angle: -90, position: "insideLeft" }}
+          />
           <Legend align="center" />
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              borderRadius: "8px",
+              backgroundColor: isDarkMode ? "black" : "white",
+              color: isDarkMode ? "white" : "black",
+            }}
+          />
         </LineChart>
-        <div>
-          <h4>Estadísticas</h4>
-          <div className="alert alert-info">
-            <span>
-              <strong>Promedio:</strong> {average}
-            </span>
-            <br />
-            <span>
-              <strong>Variación:</strong> {variation}
-            </span>
-            <br />
-            <span>
-              <strong>Total de registros:</strong> {count}
-            </span>
-          </div>
+        <div className="alert alert-info col-sm-12 col-lg-4 mt-4 shadow-sm rounded">
+          <EvolutionStatistics records={records} />
         </div>
       </div>
-    </>
+    </div>
   );
 }

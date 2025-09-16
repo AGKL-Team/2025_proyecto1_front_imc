@@ -23,13 +23,19 @@ export async function getImcHistory(filters: {
   dateFrom?: string | undefined;
   dateTo?: string | undefined;
 }): Promise<ImcResponse[]> {
+  const requestParams: Record<string, unknown> = {};
+
+  if (filters.dateFrom) {
+    requestParams.startDate = filters.dateFrom;
+  }
+  if (filters.dateTo) {
+    requestParams.endDate = filters.dateTo;
+  }
+
   const response = await httpClient.get<ImcResponse[]>(
     `${CALCULATE_IMC_ENDPOINT}/imc/history`,
     {
-      params: {
-        startDate: filters.dateFrom,
-        endDate: filters.dateTo,
-      },
+      params: requestParams,
     }
   );
 
