@@ -34,9 +34,8 @@ export default function ImcForm() {
             max="3"
             className={`form-control${errors.height ? " is-invalid" : ""}`}
             {...register("height")}
-            defaultValue={authResponse?.height || ""}
+            defaultValue={authResponse!.height}
             readOnly={!!authResponse?.height}
-            value={authResponse?.height || undefined}
           />
           {errors.height && (
             <div className="invalid-feedback">{errors.height.message}</div>

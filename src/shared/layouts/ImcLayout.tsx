@@ -1,6 +1,9 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../features/auth/hooks/useAuthStore";
 
 export default function ImcLayout() {
+  const { isAuthenticated, authResponse, logout } = useAuthStore();
+  const navigate = useNavigate();
   return (
     <div className="d-flex flex-column vh-100 theme-responsive">
       <header>
@@ -42,6 +45,40 @@ export default function ImcLayout() {
                   </Link>
                 </li>
               </ul>
+
+              {/* Botón de cuenta si autenticado */}
+              {isAuthenticated && authResponse && (
+                <div className="d-flex align-items-center m-3">
+                  <Link to="/imc/account" className="btn btn-outline-primary">
+                    <img
+                      src="https://img.icons8.com/?size=100&id=492ILERveW8G&format=png&color=000000"
+                      alt="usuario"
+                      style={{
+                        marginRight: "8px",
+                        width: "20px",
+                        height: "20px",
+                        marginBottom: "3px",
+                      }}
+                    />
+                    Cuenta
+                  </Link>
+                </div>
+              )}
+
+              {/* Botón para cerrar sesión */}
+              {isAuthenticated && (
+                <div className="d-flex align-items-center m-3">
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={() => {
+                      logout();
+                      navigate("/redirect");
+                    }}
+                  >
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </nav>
