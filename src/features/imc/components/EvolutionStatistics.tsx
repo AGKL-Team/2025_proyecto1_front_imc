@@ -15,15 +15,16 @@ export default function EvolutionStatistics({
       <h4>Estadísticas</h4>
       <div className="p-3">
         <span>
-          <strong>Promedio:</strong> {average}
+          <strong>Promedio: </strong> {average} (kg)
         </span>
         <br />
         <span>
-          <strong>Variación:</strong> {variation}
+          <strong>Variación: </strong> %{variation}
         </span>
         <br />
         <span>
-          <strong>Total de registros:</strong> {count}
+          <strong>Total de registros: </strong>
+          {count}
         </span>
       </div>
     </>

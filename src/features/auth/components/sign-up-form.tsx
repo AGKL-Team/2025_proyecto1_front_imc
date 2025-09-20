@@ -9,19 +9,16 @@ export default function SignUpForm() {
     register,
     formState: { errors },
   } = useZodForm(SignUpSchema, {
-    mode: "onChange",
+    mode: "all",
   });
   const { signUp, isSigningIn, isSigningUp } = useSignUp();
 
   const onSubmit = async (data: SignUpData) => {
-    await signUp({
-      email: data.email,
-      password: data.password,
-    });
+    await signUp({ ...data });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
           Correo Electrónico
@@ -70,6 +67,22 @@ export default function SignUpForm() {
           <div className="invalid-feedback">
             {errors.confirmPassword.message}
           </div>
+        )}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="height">Altura (m)</label>
+        <input
+          id="height"
+          type="number"
+          step="0.01"
+          min="0.1"
+          max="3"
+          placeholder="1.75"
+          className={`form-control ${errors.height ? "is-invalid" : ""}`}
+          {...register("height")}
+        />
+        {errors.height && (
+          <div className="invalid-feedback">{errors.height.message}</div>
         )}
       </div>
       <div className="text-center">

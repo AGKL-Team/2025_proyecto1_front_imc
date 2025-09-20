@@ -20,13 +20,21 @@ export async function signIn(request: LoginData): Promise<SignInResponse> {
 }
 
 export async function signUp(request: SignUpRequest) {
-  const response = await httpClient.post(`${AUTH_ENDPOINT}/sign-up`, {
-    email: request.email,
-    password: request.password,
-  });
-
-  console.log(response.data);
+  const response = await httpClient.post(`${AUTH_ENDPOINT}/sign-up`, request);
 
   if (response.status !== 201) toast.error("Error al registrar el usuario");
   else toast.success("Usuario registrado con éxito");
+}
+
+export async function signOut() {
+  await httpClient.post(`${AUTH_ENDPOINT}/sign-out`);
+}
+
+export async function updateHeight(height: number) {
+  const response = await httpClient.patch(`${AUTH_ENDPOINT}/update-height`, {
+    height,
+  });
+
+  if (response.status !== 200) toast.error("Error al actualizar la altura");
+  else toast.success("Altura actualizada con éxito");
 }
