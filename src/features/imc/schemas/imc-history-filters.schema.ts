@@ -13,7 +13,7 @@ export const ImcFiltersSchema = z
       return true;
     },
     {
-      message: "The 'dateFrom' must be earlier than or equal to 'dateTo'.",
+      message: "La fecha 'Desde' debe ser anterior o igual a la fecha 'Hasta'",
     }
   );
 
