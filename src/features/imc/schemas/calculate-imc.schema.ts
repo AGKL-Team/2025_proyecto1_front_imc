@@ -5,26 +5,26 @@ export const CalculateImcSchema = z.object({
   height: z
     .string()
     .refine(selectRequiredNumber, {
-      message: "The height must be between 0.1 and 3",
+      message: "La altura debe estar entre 0.1 y 3",
     })
     .transform((value) => Number(value))
     .pipe(
       z
         .number()
-        .min(0.1, { message: "The height must be between 0.1 and 3" })
-        .max(3, { message: "The height must be between 0.1 and 3" })
+        .min(0.1, { message: "La altura debe estar entre 0.1 y 3" })
+        .max(3, { message: "La altura debe estar entre 0.1 y 3" })
     ),
   weight: z
     .string()
     .refine(selectRequiredNumber, {
-      message: "The weight must be between 1 and 500",
+      message: "El peso debe estar entre 1 y 500",
     })
     .transform((value) => Number(value))
     .pipe(
       z
         .number()
-        .min(1, { message: "The weight must be between 1 and 500" })
-        .max(500, { message: "The weight must be between 1 and 500" })
+        .min(1, { message: "El peso debe estar entre 1 y 500" })
+        .max(500, { message: "El peso debe estar entre 1 y 500" })
     ),
 });
 

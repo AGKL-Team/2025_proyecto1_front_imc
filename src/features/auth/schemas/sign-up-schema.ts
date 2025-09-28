@@ -4,9 +4,9 @@ import { selectRequiredNumber } from "../../../shared/utils/required-number";
 export const SignUpSchema = z
   .object({
     email: z
-      .email({ message: "Invalid email." })
-      .max(255, { message: "The email cannot exceed 255 characters" }),
-    password: z.string({ message: "Invalid password." }).refine(
+      .email({ message: "Email inválido" })
+      .max(255, { message: "El email no puede exceder los 255 carácteres" }),
+    password: z.string({ message: "Contraseña inválida" }).refine(
       (value) => {
         return (
           value.length >= 8 &&
@@ -18,27 +18,27 @@ export const SignUpSchema = z
       },
       {
         message:
-          "The password must be between 8 and 16 characters long and contain at least one uppercase letter, one lowercase letter, and one number.",
+          "La contraseña debe tener entre 8 y 16 carácteres y contener al menos una letra mayúscula, una letra minúscula y un número",
       }
     ),
-    confirmPassword: z.string({ message: "Invalid password." }).min(1, {
-      message: "You must confirm your password.",
+    confirmPassword: z.string({ message: "Contraseña inválida" }).min(1, {
+      message: "Debes confirmar tu contraseña",
     }),
     height: z
       .string()
       .refine(selectRequiredNumber, {
-        message: "The height must be between 0.1 and 3",
+        message: "La altura debe estar entre 0.1 y 3",
       })
       .transform((value) => Number(value))
       .pipe(
         z
           .number()
-          .min(0.1, { message: "The height must be between 0.1 and 3" })
-          .max(3, { message: "The height must be between 0.1 and 3" })
+          .min(0.1, { message: "La altura debe estar entre 0.1 y 3" })
+          .max(3, { message: "La altura debe estar entre 0.1 y 3" })
       ),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match.",
+    message: "Las contraseñas no coinciden",
     path: ["confirmPassword"],
   });
 

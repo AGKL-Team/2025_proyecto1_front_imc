@@ -3,12 +3,12 @@ import { z } from "zod";
 
 export const LogInSchema = z.object({
   email: z
-    .email({ message: "Invalid email" })
-    .max(255, { message: "The email cannot exceed 255 characters" }),
+    .email({ message: "Email inválido" })
+    .max(255, { message: "El email no puede exceder los 255 carácteres" }),
   password: z
     .string()
-    .min(8, { message: "Minimum 8 characters" })
-    .max(16, { message: "Maximum 16 characters" }),
+    .min(8, { message: "Mínimo 8 carácteres" })
+    .max(16, { message: "Máximo 16 carácteres" }),
 });
 
 export type LoginData = z.infer<typeof LogInSchema>;
